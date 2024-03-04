@@ -1,0 +1,52 @@
+!pip install python
+!pip install opencv-python
+!pip install opencv-contrib-python
+
+Install Mosquitto Broker
+add conf.txt file as specfied below to mosquitto folder of c://drive
+
+
+
+
+[ Create Virutal Enviroment to avoid Conflict from system]
+python -m venv env_name
+source env_name/scripts/activate : to active virtual Enviroment
+
+1. Establish Broker
+2. make conf.txt file with these line:
+	listener 1883
+	allow_anonymous true
+3. Establish SSH
+	ssh username@dummy.local , or,
+	ssh username@raspberrypi-ip
+ user, dummy, ip as specified
+4. Check Broker's IP:	
+	ipconfig in terminal; 
+	wireless lan adapter wifi's ip; is broker's IP
+5. Check pi's IP using: ifconfig or directly from your hotspot connection.
+   Subscriber and Publisher must be connected to same hotspot/wifi.
+6. Update Broker's IP in code.
+7. Check Subscriber's Ip for streaming.
+
+
+(After establishing SSH, use VSCode Host for rest of the steps of subscriber)
+8. connect to host from vscode and
+	>run: python subscriber.py
+	open new terminal and run command as in 7/ ffmpeg only!
+9. Access Camera connected to raspberry pi using RTMP (Real Time Messaging Protocol)
+	> sudo ufw allow 1935/tcp ; 1935 is default port
+	> sudo systemctl reload nginx.service
+	check nginx status
+	>sudo service nginx status
+
+	> only if nginx is not running: sudo service nginx restart
+	> ffmpeg -f v4l2 -i /dev/video0 -c:v libx264 -preset ultrafast -tune zerolatency -b:v 1500k -bufsize 3000k -pix_fmt yuv420p -g 30 -an -f flv rtmp://localhost/live/stream
+8. update subsciber's IP to rtmp_url
+9. Get Back to local host: run final.py/test.py
+	
+
+	
+	Congratulations! You're Successfully Deployed your model!
+
+	
+

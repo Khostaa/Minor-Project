@@ -1,12 +1,38 @@
-!pip install python
-!pip install opencv-python
-!pip install opencv-contrib-python
+Hardware Requirements:
+
+Jumper Wires
+male to female: 12 pcs
+male to male: 4 pcs
+female to female: 6 pcs
+Ultrasonic Sensor - connected to arduino at pins specified as in code(needs to connected to raspbeery pi - future enhancement)
+Arduino UNO + Cable
+Raspberry Pi Model 3B+ (any model)
+MicroUSB cable to power PI
+Motor Driver
+Chasis with 4 X wheels + motors connected to 8*dc wire.
+Powerbank
+Webcam
+Doublesided Tape
+
+
+Software Requirements
+install python
+install opencv-python
+install opencv-contrib-python
+install ultralytics
+
+use Roboflow for annotation
 
 Install Mosquitto Broker
 add conf.txt file as specfied below to mosquitto folder of c://drive
 
 
+Running the System:
 
+> Download PI Imager and make a bootable drive with raspberry pi OS.
+> Download Putty.
+> Connect pendrive to pi and then power the raspberry pi
+> remeber username/ and wifi connections as it must be hotspot while pi is running! (!important)
 
 [ Create Virutal Enviroment to avoid Conflict from system]
 python -m venv env_name
